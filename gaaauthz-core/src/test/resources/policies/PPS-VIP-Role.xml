@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<PolicySet PolicySetId="PPS:VIP:role" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:permit-overrides">
+		<Target/>
+	<Policy PolicyId="http://geysers.eu/upperlicl/roles/vip" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
+		<Description>Anybody in the VIP role could request/configure/instantiate VR at PIP</Description>
+		<Target/>		
+		<Rule RuleId="http://geysers.eu/upperlicl/roles/vip/request-vr" Effect="Permit">
+			<Target>				
+				<Resources>
+					<Resource>
+						<ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+							<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR</AttributeValue>
+							<ResourceAttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type"
+								DataType="http://www.w3.org/2001/XMLSchema#string"/>
+						</ResourceMatch>
+					</Resource>
+				</Resources>
+				<Actions>
+					<Action>
+						<ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+							<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">request-vr</AttributeValue>
+							<ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string"/>
+						</ActionMatch>
+					</Action>					
+				</Actions>
+			</Target>
+		</Rule>			
+	</Policy>	
+	
+	<!-- testing: Allow VIP inherit all permissions from VIO -->
+ 	<PolicySetIdReference>PPS:VIO:role</PolicySetIdReference> 
+</PolicySet>

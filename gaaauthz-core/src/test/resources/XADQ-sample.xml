@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xacml-samlp:XACMLAuthzDecisionQuery xmlns:xacml-samlp="urn:oasis:names:tc:xacml:2.0:profile:saml2.0:v2:schema:protocol" ReturnContext="true" Version="2.0">
+   <Request xmlns="urn:oasis:names:tc:xacml:2.0:context:schema:os" xmlns:ns2="urn:oasis:names:tc:xacml:2.0:policy:schema:os">
+      <Subject>
+         <Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>WHO740@users.testbed.ist-phosphorus.eu</AttributeValue>
+         </Attribute>
+         <Attribute AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-context" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>demo001</AttributeValue>
+         </Attribute>
+         <Attribute AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>researcher</AttributeValue>
+         </Attribute>
+         <Attribute AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-confdata" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>aaa:authn:gaaapi:subject:valid</AttributeValue>
+         </Attribute>
+      </Subject>
+      <Resource>
+         <Attribute AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-realm" DataType="http://www.w3.org/2001/XMLSchema#anyURI" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>testbed.ist-phosphorus.eu</AttributeValue>
+         </Attribute>
+         <Attribute AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#anyURI" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>harmony</AttributeValue>
+         </Attribute>
+         <Attribute AttributeId="http://authz-interop.org/AAA/xacml/resource/source" DataType="http://www.w3.org/2001/XMLSchema#anyURI" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>10.3.1.16</AttributeValue>
+         </Attribute>
+         <Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#anyURI" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>http://testbed.ist-phosphorus.eu/viola/harmony</AttributeValue>
+         </Attribute>
+         <Attribute AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-domain" DataType="http://www.w3.org/2001/XMLSchema#anyURI" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>viola</AttributeValue>
+         </Attribute>
+         <Attribute AttributeId="http://authz-interop.org/AAA/xacml/resource/target" DataType="http://www.w3.org/2001/XMLSchema#anyURI" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>10.7.3.13</AttributeValue>
+         </Attribute>
+      </Resource>
+      <Action>
+         <Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="http://testbed.ist-phosphorus.eu/phosphorus/aaa/AttributeIssuer">
+            <AttributeValue>create-path</AttributeValue>
+         </Attribute>
+      </Action>
+      <Environment/>
+   </Request>
+</xacml-samlp:XACMLAuthzDecisionQuery>

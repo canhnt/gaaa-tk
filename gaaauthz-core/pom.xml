@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<modelVersion>4.0.0</modelVersion> <!-- pom.xml version -->
+
+	<parent>
+		<groupId>org.aaaarch</groupId>
+		<artifactId>base-gaaauthz-pom</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.aaaarch</groupId>
+	<artifactId>gaaauthz-core</artifactId>
+	<version>1.0.0-SNAPSHOT-20110809</version>
+
+	<!-- Maven configuration -->
+	<packaging>bundle</packaging>
+	<name>GAAATK Toolkit Core Library</name>
+	<description>General Authorization Framework Core Library</description>
+	<url>http://www.science.uva.nl/research/sne/</url>
+
+	<properties>
+		<opensaml.version>2.4.1_1</opensaml.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.opensaml</artifactId>
+			<version>${opensaml.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.sunxacml</groupId>
+			<artifactId>sunxacml</artifactId>
+			<version>2.0-M1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>net.jcip</groupId>
+			<artifactId>jcip-annotations</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.5</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>sun.jdk</groupId>
+			<artifactId>jce</artifactId>
+			<version>1.6.0</version>
+			<scope>system</scope>
+			<systemPath>
+				${java.home}/lib/ext/sunjce_provider.jar
+			</systemPath>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.4</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Name>${project.name}</Bundle-Name>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Import-Package>
+							com.sun.crypto.provider;resolution:=optional,
+							sun.misc;resolution:=optional,
+							!org.aaaarch.*,
+							*																	
+						</Import-Package>
+						<Export-Package>
+							org.aaaarch.config,
+							org.aaaarch.pdp,
+							org.aaaarch.pdp.impl,
+							org.aaaarch.policy,
+							org.aaaarch.policy.impl,
+							org.aaaarch.utils,
+							org.aaaarch.xmltooling	
+						</Export-Package>
+						<Embed-Dependency>sunxacml;scope=compile|runtime;inline=true</Embed-Dependency>
+					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

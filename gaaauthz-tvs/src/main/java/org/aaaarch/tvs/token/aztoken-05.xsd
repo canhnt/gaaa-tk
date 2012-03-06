@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- edited with XMLSpy v2007 sp2 (http://www.altova.com) by Mr. Demchenko (ZNews Consulting) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:AAA="http://www.aaauthreach.org/ns/AAA" targetNamespace="http://www.aaauthreach.org/ns/AAA" elementFormDefault="qualified">
+	<xs:element name="AuthzToken" type="AAA:AuthzTokenType"/>
+	<xs:complexType name="AuthzTokenType">
+		<xs:sequence>
+			<xs:element ref="AAA:TokenValue" minOccurs="0"/>
+			<xs:element name="Conditions" type="AAA:ConditionsType" minOccurs="0"/>
+			<xs:element name="Decision" type="AAA:DecisionType" minOccurs="0"/>
+			<xs:element name="Domains" type="AAA:DomainsType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="tokentype" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="access-token"/>
+					<xs:enumeration value="pilot-type1"/>
+					<xs:enumeration value="pilot-type2"/>
+					<xs:enumeration value="pilot-type3"/>
+					<xs:enumeration value="pilot-type4"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="TokenID" type="xs:hexBinary" use="required"/>
+		<xs:attribute name="SessionID" type="xs:string" use="required"/>
+		<xs:attribute name="Issuer" type="xs:anyURI" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ConditionsType">
+		<xs:attribute name="NotBefore" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="NotOnOrAfter" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:element name="TokenValue" type="xs:string"/>
+	<xs:complexType name="DecisionType">
+		<xs:sequence>
+			<xs:element name="Obligations" type="AAA:ObligationsType"/>
+		</xs:sequence>
+		<xs:attribute name="Result" type="xs:string" use="required"/>
+		<xs:attribute name="ResourceId" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ObligationsType">
+		<xs:sequence>
+			<xs:element name="Obligation" type="AAA:ObligationType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ObligationType" mixed="true">
+		<xs:sequence>
+			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="ObligationId" type="xs:anyURI" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="DomainsType">
+		<xs:sequence>
+			<xs:element name="Domain" type="AAA:DomainType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DomainType">
+		<xs:sequence>
+			<xs:element name="AuthzToken" type="AAA:AuthzTokenType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="KeyInfo" type="AAA:KeyInfoType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="domainId" type="xs:anyURI" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="KeyInfoType" mixed="true">
+		<xs:sequence>
+			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="keytype" type="xs:string" use="optional"/>
+	</xs:complexType>
+</xs:schema>
