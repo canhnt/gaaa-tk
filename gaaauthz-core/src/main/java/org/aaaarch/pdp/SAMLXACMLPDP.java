@@ -10,6 +10,6 @@ import org.opensaml.xacml.profile.saml.XACMLAuthzDecisionStatementType;
  * @author CanhNT
  *
  */
-public interface SAMLXACMLPDP extends XACMLPDP {
-	public XACMLAuthzDecisionStatementType evaluate(XACMLAuthzDecisionQueryType authzQuery);
+public interface SAMLXACMLPDP {
+	public XACMLAuthzDecisionStatementType evaluate(XACMLAuthzDecisionQueryType authzQuery) throws PDPException;
 }

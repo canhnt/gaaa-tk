@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
-import org.aaaarch.utils.HelpersXMLsecurity;
+import org.aaaarch.xmltooling.HelpersXMLsecurity;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;

@@ -91,6 +91,22 @@ import java.util.Set;
 public class SimplePDP
 {
 
+	public static final String REQUEST_FILE = "src/test/resources/xacml-request.xml";
+	public static final String[] STATIC_POLICIES = {
+		"src/test/resources/policies/RPS-VIO-Role.xml",
+		"src/test/resources/policies/RPS-VIP-Role.xml",
+		"src/test/resources/policies/RPS-VIO-IT-Role.xml"
+	};
+	
+	public static final String[] STATIC_REF_POLICIES = {		
+		"src/test/resources/policies/PPS-VIP-Role.xml", 
+		"src/test/resources/policies/PPS-VIO-Role.xml",
+//		"src/test/resources/policies/PPS-VIO-IT-Role.xml",
+		"src/test/resources/policies/permission-request-vi.xml",
+		"src/test/resources/policies/permission-instantiate-vi.xml",
+		"src/test/resources/policies/permission-decommission-vi.xml"
+		
+	};
     // this is the actual PDP object we'll use for evaluation
     private PDP pdp = null;
 
@@ -119,17 +135,17 @@ public class SimplePDP
      *
      * @param policies an arry of filenames and URLs that specify policies
      */
-    public SimplePDP(String [] policies) throws Exception {
+    public SimplePDP(String [] staticPolicies, String[] refPolicies) throws Exception {
         // Create the two static modules with the given policies so that
         // we have context-based and reference-based access to all the
         // policies provided on the command-line
         
     	// LOading policies for XACML RBAC 
     	//Load set of RPS policyset here as static: RPS-VIO-Role.xml; RPS-VIP-Role.xml
-    	List policyList = Arrays.asList(policies[0], policies[1]);
+    	List policyList = Arrays.asList(staticPolicies);
     	
     	//Load set of PPS policyset here as ref policies: PPS-VIO-Role.xml; PPS-VIP-Role.xml 
-        List refPolicyList = Arrays.asList(policies[2], policies[3]);
+        List refPolicyList = Arrays.asList(refPolicies);
         
         StaticPolicyFinderModule staticModule =
             new StaticPolicyFinderModule(PermitOverridesPolicyAlg.algId,
@@ -204,30 +220,31 @@ public class SimplePDP
      *             com.sun.xacml.PDPConfigFile.
      */
     public static void main(String [] args) throws Exception {
-        if (args.length < 2) {
-            System.out.println("Usage: -config <request>");
-            System.out.println("       <request> <policy> [policies]");
-            System.exit(1);
-        }
+//        if (args.length < 2) {
+//            System.out.println("Usage: -config <request>");
+//            System.out.println("       <request> <policy> [policies]");
+//            System.exit(1);
+//        }
         
         SimplePDP simplePDP = null;
-        String requestFile = null;
-        
-        if (args[0].equals("-config")) {
-            requestFile = args[1];
-            simplePDP = new SimplePDP();
-        } else {
-            requestFile = args[0];
-            String [] policyFiles = new String[args.length - 1];
-            
-            for (int i = 1; i < args.length; i++)
-                policyFiles[i-1] = args[i];
+//        String requestFile = null;
+//        
+//        if (args[0].equals("-config")) {
+//            requestFile = args[1];
+//            simplePDP = new SimplePDP();
+//        } else {
+//            requestFile = args[0];
+//            String [] policyFiles = new String[args.length - 1];
+//            
+//            for (int i = 1; i < args.length; i++)
+//                policyFiles[i-1] = args[i];
+//
+//            simplePDP = new SimplePDP(STATIC_POLICIES, SimplePDP.STATIC_REF_POLICIES);
+//        }
 
-            simplePDP = new SimplePDP(policyFiles);
-        }
-
+        simplePDP = new SimplePDP(STATIC_POLICIES, SimplePDP.STATIC_REF_POLICIES);
         // evaluate the request
-        ResponseCtx response = simplePDP.evaluate(requestFile);
+        ResponseCtx response = simplePDP.evaluate(REQUEST_FILE);
 
         // for this sample program, we'll just print out the response
         response.encode(System.out, new Indenter());

@@ -11,9 +11,8 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.aaaarch</groupId>
 	<artifactId>gaaauthz-core</artifactId>
-	<version>1.0.0-SNAPSHOT-20110809</version>
+	<version>1.0.0-SNAPSHOT-20120320</version>
 
 	<!-- Maven configuration -->
 	<packaging>bundle</packaging>
@@ -77,18 +76,15 @@
 						<Bundle-Name>${project.name}</Bundle-Name>
 						<Bundle-Version>${project.version}</Bundle-Version>
 						<Import-Package>
-							com.sun.crypto.provider;resolution:=optional,
-							sun.misc;resolution:=optional,
-							!org.aaaarch.*,
 							*																	
 						</Import-Package>
 						<Export-Package>
 							org.aaaarch.config,
 							org.aaaarch.pdp,
 							org.aaaarch.pdp.impl,
-							org.aaaarch.policy,
-							org.aaaarch.policy.impl,
-							org.aaaarch.utils,
+							org.aaaarch.policy,							
+							org.aaaarch.sunxacml,
+							org.aaaarch.util,
 							org.aaaarch.xmltooling	
 						</Export-Package>
 						<Embed-Dependency>sunxacml;scope=compile|runtime;inline=true</Embed-Dependency>
