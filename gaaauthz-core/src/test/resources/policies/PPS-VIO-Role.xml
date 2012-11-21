@@ -1,41 +1,7 @@
 <?xml version="1.0"?>
 <PolicySet PolicySetId="PPS:VIO:role" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:permit-overrides">
-		<Target/>
-	<Policy PolicyId="http://geysers.eu/upperlicl/roles/vio" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
-		<Description>Anybody in the vio role could request/configure/instantiate VI at LICL</Description>
-		<Target/>		
-		<Rule RuleId="http://geysers.eu/upperlicl/roles/vio/request-vi" Effect="Permit">
-			<Target>				
-				<Resources>
-					<Resource>
-						<ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-							<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI</AttributeValue>
-							<ResourceAttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type"
-								DataType="http://www.w3.org/2001/XMLSchema#string"/>
-						</ResourceMatch>
-					</Resource>
-				</Resources>
-				<Actions>
-					<Action>
-						<ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-							<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Request-VI</AttributeValue>
-							<ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string"/>
-						</ActionMatch>
-					</Action>
-					<Action>
-						<ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-							<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Configure-VI</AttributeValue>
-							<ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string"/>
-						</ActionMatch>
-					</Action>		
-					<Action>
-						<ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-							<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Deploy-VI</AttributeValue>
-							<ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string"/>
-						</ActionMatch>
-					</Action>	
-				</Actions>
-			</Target>
-		</Rule>			
-	</Policy>	
+	<Target/>
+	<PolicyIdReference>permission:vi:request-action</PolicyIdReference> 		
+	<PolicyIdReference>permission:vi:instantiate-action</PolicyIdReference> 	
+	<PolicyIdReference>permission:vi:decommission-action</PolicyIdReference> 
 </PolicySet>

@@ -242,14 +242,14 @@
 			</extension>
 		</extensions>		
 	</build>
-<!--
+
 	<repositories>
 		<repository>
 			<id>GAAATK libs</id>
 			<url>http://staff.science.uva.nl/~tngo1/maven2/snapshots</url>
 		</repository>		
 	</repositories>
--->
+
   <modules>
    	<module>gaaauthz-core</module>
 	<module>gaaauthz-tvs</module>

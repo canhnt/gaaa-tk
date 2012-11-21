@@ -8,19 +8,21 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.aaaarch.util.OpenSAMLUtil;
 import org.junit.Test;
 import org.opensaml.DefaultBootstrap;
 import org.opensaml.xacml.profile.saml.XACMLAuthzDecisionQueryType;
 import org.opensaml.xml.ConfigurationException;
+import org.opensaml.xml.io.UnmarshallingException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 public class OpenSAMLUtilsTest {
 
-	public static String FILE_NAME = "src/test/resources/XADQ-sample.xml";
+	public static String FILE_NAME = "src/test/resources/XADQ.xml";
 	
 	@Test
-	public void testConvertXADQ() {
+	public void testConvertXADQ() throws UnmarshallingException {
 		
 		initOpenSAML();
 		
@@ -34,8 +36,8 @@ public class OpenSAMLUtilsTest {
 			db = dbf.newDocumentBuilder();
 			Document doc = db.parse(FILE_NAME);
 			
-			XACMLAuthzDecisionQueryType xadq = OpenSAMLUtils.convertXADQ(doc.getDocumentElement());
-			System.out.println(OpenSAMLUtils.toString(xadq));
+			XACMLAuthzDecisionQueryType xadq = OpenSAMLUtil.unmarshalXADQ(doc.getDocumentElement());
+			System.out.println(OpenSAMLUtil.toString(xadq));
 			
 			assertNotNull(xadq);
 			return;

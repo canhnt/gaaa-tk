@@ -5,20 +5,20 @@
 			<AttributeValue>canhnt</AttributeValue>
 		</Attribute>
 		<Attribute AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="http://sap.geysers.eu/sml/AttributeIssuer">
-			<AttributeValue>PIP</AttributeValue>
+			<AttributeValue>VIO</AttributeValue>
 		</Attribute>
 	</Subject>
 	<Resource>
 		<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="http://sap.geysers.eu/aai/AttributeIssuer">
-			<AttributeValue>VI-1234</AttributeValue>
+			<AttributeValue>VI#1234</AttributeValue>	
 		</Attribute>	
-		<Attribute AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="http://sap.geysers.eu/aai/AttributeIssuer">
-			<AttributeValue>VI</AttributeValue>
+		<Attribute AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#anyURI" Issuer="http://sap.geysers.eu/aai/AttributeIssuer">
+			<AttributeValue>http://geysers.eu/upperlicl/resource/resource-type/VI</AttributeValue>
 		</Attribute>					
 	</Resource>
 	<Action>
 		<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="http://sap.geysers.eu/sml/AttributeIssuer">
-			<AttributeValue>SLI:Request-VI</AttributeValue>
+			<AttributeValue>SLI:Decommission-VI</AttributeValue>
 		</Attribute>
 	</Action>
 	<Environment/>

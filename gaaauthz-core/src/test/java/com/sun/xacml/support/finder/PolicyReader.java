@@ -128,12 +128,12 @@ public class PolicyReader implements ErrorHandler
      *
      * @param finder a <code>PolicyFinder</code> that is used by policy sets,
      *               which may be null only if no references are used
-     * @param logger a <code>Logger</code> used to report parsing errors
+     * @param log a <code>Logger</code> used to report parsing errors
      * @param schemaFile the schema file used to validate policies, or
      *                   null if schema validation is not desired
      */
-    public PolicyReader(PolicyFinder finder, Logger logger, File schemaFile) {
-        this.logger = logger;
+    public PolicyReader(PolicyFinder finder, Logger log, File schemaFile) {
+        this.logger = log;
         this.finder = finder;
 
         // create the factory
