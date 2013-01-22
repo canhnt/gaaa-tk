@@ -1,0 +1,7 @@
+*.class
+*.swp
+.classpath
+.project
+.settings/
+.svn/
+.metadata
