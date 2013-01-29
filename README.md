@@ -9,5 +9,5 @@ GAAA-TK is a generic AAA library for authentication, authorization and accountin
 
 Authors
 -------
-* Canh Ngo
-* Yuri Demchenko
+* Canh Ngo (canhnt@gmail.com)
+* Yuri Demchenko (y.demchenko@uva.nl)
