@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion> <!-- pom.xml version -->
 
@@ -21,37 +19,63 @@
 	<url>http://www.science.uva.nl/research/sne/</url>
 
 	<properties>
-		<opensaml.version>2.4.1_1</opensaml.version>
+		<opensaml.version>2.5.1</opensaml.version>
+		<sunxacml.version>2.0-M1</sunxacml.version>
+		<xmltooling.version>1.3.2</xmltooling.version>
+		<xml-apis.version>1.4.01</xml-apis.version>
+		<jaxb-api.version>2.1</jaxb-api.version>
+		<xmlsec.version>1.4.4</xmlsec.version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>XML APIS</id>
+			<url>http://www.soapui.org/repository/maven2/</url>
+		</repository>		
+		<repository>
+			<id>GAAATK libs</id>
+			<url>http://staff.science.uva.nl/~tngo1/maven2/snapshots</url>
+		</repository>		
+	</repositories>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.opensaml</artifactId>
+			<groupId>org.opensaml</groupId>
+			<artifactId>opensaml</artifactId>
 			<version>${opensaml.version}</version>
-			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.opensaml</groupId>
+			<artifactId>xmltooling</artifactId>
+			<version>${xmltooling.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>${xml-apis.version}</version>			
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb-api.version}</version>			
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.santuario</groupId>
+			<artifactId>xmlsec</artifactId>
+			<version>${xmlsec.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>net.sf.sunxacml</groupId>
 			<artifactId>sunxacml</artifactId>
-			<version>2.0-M1</version>
-			<scope>compile</scope>
+			<version>${sunxacml.version}</version>			
 		</dependency>
 
-		<dependency>
-			<groupId>net.jcip</groupId>
-			<artifactId>jcip-annotations</artifactId>
-			<version>1.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.5</version>
-			<scope>test</scope>
-		</dependency>
-
+<!--
 		<dependency>
 			<groupId>sun.jdk</groupId>
 			<artifactId>jce</artifactId>
@@ -60,7 +84,7 @@
 			<systemPath>
 				${java.home}/lib/ext/sunjce_provider.jar
 			</systemPath>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<build>
@@ -87,7 +111,7 @@
 							org.aaaarch.util,
 							org.aaaarch.xmltooling	
 						</Export-Package>
-						<Embed-Dependency>sunxacml;scope=compile|runtime;inline=true</Embed-Dependency>
+<!--						<Embed-Dependency>sunxacml;scope=compile|runtime;inline=true</Embed-Dependency>-->
 					</instructions>
 				</configuration>
 			</plugin>
